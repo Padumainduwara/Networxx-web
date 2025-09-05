@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative h-auto w-screen bg-black">
+     <main className="relative h-auto w-full overflow-x-hidden bg-black">
       <AnimatePresence>
         {isLoading && <Preloader />}
       </AnimatePresence>
