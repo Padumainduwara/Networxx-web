@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/ui/Layout";
 import Preloader from "@/components/ui/Preloader";
-import Scene from "@/components/canvas/Scene"; // Scene එක import කරනවා
-import { AnimatePresence } from "framer-motion";
+import Scene from "@/components/canvas/Scene";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,14 +25,23 @@ export default function Home() {
         {isLoading && <Preloader />}
       </AnimatePresence>
       
-      {/* 3D Scene එක මෙතන තියෙන්න ඕනේ */}
       <div className={`fixed top-0 left-0 h-screen w-full transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <Scene onLoaded={() => {}} />
       </div>
 
-      <div className="relative z-10">
-        <Layout />
-      </div>
+      <AnimatePresence>
+        {!isLoading && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
+            className="relative z-10"
+          >
+            {/* Layout එකට isLoaded prop එක යැවීම */}
+            <Layout isLoaded={!isLoading} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }

@@ -1,6 +1,6 @@
 // src/components/ui/Preloader.tsx
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 export default function Preloader() {
   const variants = {
@@ -16,6 +16,26 @@ export default function Preloader() {
   const subTextVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 0.8, delay: 1.2 } },
+  };
+
+ 
+  const loadingDotContainerVariants = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const loadingDotVariants: Variants = {
+    animate: {
+      y: [0, -4, 0],
+      transition: {
+        duration: 0.8,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -34,14 +54,24 @@ export default function Preloader() {
         >
           NETWORXX
         </motion.h1>
-        <motion.p
+
+        <motion.div
           variants={subTextVariants}
           initial="initial"
           animate="animate"
-          className="mt-4 text-sm text-gray-400"
+          className="mt-4 text-sm text-gray-400 flex items-center justify-center space-x-1"
         >
-          Initializing Secure Experience...
-        </motion.p>
+          <span>Initializing Secure Experience</span>
+        
+          <motion.div
+            variants={loadingDotContainerVariants}
+            className="flex"
+          >
+            <motion.span variants={loadingDotVariants}>.</motion.span>
+            <motion.span variants={loadingDotVariants}>.</motion.span>
+            <motion.span variants={loadingDotVariants}>.</motion.span>
+          </motion.div>
+        </motion.div>
       </div>
     </motion.div>
   );
