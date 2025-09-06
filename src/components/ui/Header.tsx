@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { useLenis } from "@/components/ui/lenis-provider"; // Import the useLenis hook
+import { useLenis } from "@/components/ui/lenis-provider"; 
 
 export default function Header() {
   const { scrollY } = useScroll();

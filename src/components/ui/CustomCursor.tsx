@@ -42,7 +42,7 @@ export default function CustomCursor() {
       height: 16,
       width: 16,
       backgroundColor: "#06b6d4",
-      mixBlendMode: "difference", // මෙතන as const අයින් කරාට කමක් නෑ, සම්පූර්ණ object එකටම දාන නිසා
+      mixBlendMode: "difference", 
       transition: { type: "spring", stiffness: 500, damping: 30 }
     },
     hover: {
@@ -51,7 +51,7 @@ export default function CustomCursor() {
       height: 48,
       width: 48,
       backgroundColor: "#fff",
-      mixBlendMode: "difference", // මෙතනත් as const අයින් කරාට කමක් නෑ
+      mixBlendMode: "difference",
       transition: { type: "spring", stiffness: 400, damping: 20 }
     },
   } as const;

@@ -37,7 +37,6 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
             className="relative z-10"
           >
-            {/* Layout එකට isLoaded prop එක යැවීම */}
             <Layout isLoaded={!isLoading} />
           </motion.div>
         )}

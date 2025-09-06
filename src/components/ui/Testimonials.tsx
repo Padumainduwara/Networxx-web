@@ -4,7 +4,6 @@
 import { motion } from 'framer-motion';
 import { FaQuoteLeft } from 'react-icons/fa';
 
-// Dummy testimonial data - ඔබට මෙතනට සැබෑ දත්ත යොදාගන්න පුළුවන්
 const testimonials = [
   {
     quote: "NETWORXX provided us with a robust security solution that exceeded our expectations. Their team is knowledgeable, professional, and always available to help. We feel much more secure with their managed services.",

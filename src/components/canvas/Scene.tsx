@@ -3,7 +3,7 @@
 import { Canvas, CanvasProps } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import { useRef, Suspense } from "react";
-import DigitalFortress from "./DigitalFortress"; // අලුත් component එක
+import DigitalFortress from "./DigitalFortress"; 
 import AnimationController from "./AnimationController";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from 'three';

@@ -26,7 +26,7 @@ const PlexusMaterial = shaderMaterial(
     uColor: new THREE.Color(0.0, 0.8, 1.0),
     uPixelRatio: typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1,
     uSize: 80.0,
-    uMouse: new THREE.Vector3(0, 0, 0), // Mouse position uniform එක
+    uMouse: new THREE.Vector3(0, 0, 0), // Mouse position uniform
   },
   // Vertex Shader
   `
@@ -39,7 +39,6 @@ const PlexusMaterial = shaderMaterial(
     void main() {
       vec4 modelPosition = modelMatrix * vec4(position, 1.0);
       
-      // Mouse එකට ප්‍රතිචාර දක්වන කොටස
       float dist = distance(modelPosition.xyz, uMouse);
       float force = smoothstep(2.0, 0.0, dist) * 2.0;
       vec3 displacement = normalize(modelPosition.xyz - uMouse) * force;
