@@ -5,16 +5,16 @@ import ContactForm from "./ContactForm";
 import ServiceCard from "./ServiceCard";
 import Testimonials from "./Testimonials";
 import { FaShieldAlt, FaNetworkWired, FaUserCog, FaChalkboardTeacher } from 'react-icons/fa';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useAnimate } from 'framer-motion';
 import AllianceLogos from "./AllianceLogos";
 import AnimatedNumber from "./AnimatedNumber";
 import Image from "next/image";
-import { MouseEvent, useEffect, useRef } from "react";
+import { MouseEvent, useEffect,} from "react";
 
 
 export default function Layout({ isLoaded }: { isLoaded: boolean }) {
 
-  const scope = useRef<HTMLHeadingElement>(null);
+  const [scope] = useAnimate();
   const baseText = "NETWORXX";
   const scrambleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
@@ -55,7 +55,7 @@ export default function Layout({ isLoaded }: { isLoaded: boolean }) {
   }, [isLoaded, scope]);
 
 
-  // --- Tilt Effect ---
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -92,9 +92,10 @@ export default function Layout({ isLoaded }: { isLoaded: boolean }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-wider uppercase bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
+           
+                className="text-[2.5rem] leading-none sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-normal sm:tracking-wider uppercase bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
               >
-                
+              
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
