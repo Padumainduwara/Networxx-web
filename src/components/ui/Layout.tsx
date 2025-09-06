@@ -9,12 +9,12 @@ import { motion, useMotionValue, useSpring, useTransform, useAnimate } from 'fra
 import AllianceLogos from "./AllianceLogos";
 import AnimatedNumber from "./AnimatedNumber";
 import Image from "next/image";
-import { MouseEvent, useEffect } from "react";
+import { MouseEvent, useEffect, ReactNode } from "react";
 
 
 export default function Layout({ isLoaded }: { isLoaded: boolean }) {
   // --- Text Scramble Animation එක සඳහා ---
-  const [scope] = useAnimate();
+  const [scope, animate] = useAnimate();
   const baseText = "NETWORXX";
   const scrambleChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 
@@ -92,7 +92,8 @@ export default function Layout({ isLoaded }: { isLoaded: boolean }) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-wider uppercase bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
+                // --- මෙතන තමයි වෙනස තියෙන්නේ ---
+                className="text-[2.5rem] leading-none sm:text-6xl md:text-6xl lg:text-7xl font-black tracking-normal sm:tracking-wider uppercase bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
               >
                 {/* Text එක JavaScript මගින් යෙදේ */}
               </motion.h1>
@@ -179,7 +180,7 @@ export default function Layout({ isLoaded }: { isLoaded: boolean }) {
                     Who We Are
                 </motion.h2>
                 <p className="mt-6 text-white">
-                    Welcome to NETWORXX. We are a channel-focused organization assisting customers in all areas of information technology, communications, and cybersecurity. Since our inception in 2012, we&apos;ve grown to serve a multitude of global and local clients from 3 key centers in Sri Lanka, India and Qatar.
+                    Welcome to NETWORXX. We are a channel-focused organization assisting customers in all areas of information technology, communications, and cybersecurity. Since our inception in 2012, we've grown to serve a multitude of global and local clients from 3 key centers in Sri Lanka, India and Qatar.
                 </p>
                  <p className="mt-4 text-white">
                     Our mission is to deliver a quality and reputable service to all our customers in areas of Secure Information Technology and Communications, by being their preferred partner of choice.
