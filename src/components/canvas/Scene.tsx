@@ -8,7 +8,8 @@ import AnimationController from "./AnimationController";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from 'three';
 
-export default function Scene({ onLoaded, ...props }: { onLoaded: () => void } & CanvasProps) {
+
+export default function Scene({ onLoaded, isLoaded, ...props }: { onLoaded: () => void, isLoaded: boolean } & CanvasProps) {
   const fortressRef = useRef<THREE.Group>(null);
 
   return (
@@ -27,7 +28,8 @@ export default function Scene({ onLoaded, ...props }: { onLoaded: () => void } &
       
       <Suspense fallback={null}>
         <DigitalFortress ref={fortressRef} />
-        <AnimationController fortressRef={fortressRef} />
+       
+        <AnimationController fortressRef={fortressRef} isLoaded={isLoaded} />
         
         <EffectComposer>
           <Bloom 

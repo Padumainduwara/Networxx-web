@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const isLoaded = !isLoading; 
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,18 +27,18 @@ export default function Home() {
       </AnimatePresence>
       
       <div className={`fixed top-0 left-0 h-screen w-full transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
-        <Scene onLoaded={() => {}} />
+        <Scene onLoaded={() => {}} isLoaded={isLoaded} />
       </div>
 
       <AnimatePresence>
-        {!isLoading && (
+        {isLoaded && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeInOut" }}
             className="relative z-10"
           >
-            <Layout isLoaded={!isLoading} />
+            <Layout isLoaded={isLoaded} />
           </motion.div>
         )}
       </AnimatePresence>

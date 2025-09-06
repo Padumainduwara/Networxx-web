@@ -1,6 +1,9 @@
+// src/components/ui/lenis-provider.tsx
 "use client";
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import Lenis from '@studio-freight/lenis';
+import gsap from "gsap"; // GSAP import කරන්න
+import { ScrollTrigger } from "gsap/ScrollTrigger"; // ScrollTrigger import කරන්න
 
 const LenisContext = createContext<Lenis | null>(null);
 
@@ -10,17 +13,25 @@ export function LenisProvider({ children }: { children: ReactNode }) {
   const [lenis, setLenis] = useState<Lenis | null>(null);
 
   useEffect(() => {
+
+    gsap.registerPlugin(ScrollTrigger);
+
     const newLenis = new Lenis();
     setLenis(newLenis);
 
-    function raf(time: number) {
-      newLenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+
+    newLenis.on('scroll', ScrollTrigger.update);
+
+    
+    gsap.ticker.add((time) => {
+      newLenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
       newLenis.destroy();
+ 
     };
   }, []);
 
